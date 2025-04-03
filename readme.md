@@ -79,4 +79,4 @@ DELETE /users/:id
 🔜 Adiconar campos como : senha, data, telefone e nickname 
 🔜 Criptografia de dados
 🔜 Integração com banco de dados
-🔜 Testes automatizados
+🔜 Testes Unitarios
