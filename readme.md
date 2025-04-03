@@ -7,9 +7,7 @@ Cada usuário possui **nome, e-mail e imagem**. 🚀
 
 - **Node.js**
 - **Express**
-- **MongoDB / PostgreSQL** _(se aplicável)_
-- **Multer** _(para upload de imagens, se necessário)_
-- **JWT** _(caso implemente autenticação)_
+- **Mysql / PostgreSQL** _(se aplicável)_
 
 ---
 
@@ -20,7 +18,7 @@ Cada usuário possui **nome, e-mail e imagem**. 🚀
 Antes de começar, certifique-se de ter instalado:
 
 - **Node.js** (versão X ou superior)
-- **Banco de dados** (se aplicável, ex: MongoDB, PostgreSQL)
+- **Banco de dados** (se aplicável, ex: Mysql, PostgreSQL)
 
 ### 2️⃣ Clonar o Repositório
 
@@ -78,5 +76,7 @@ DELETE /users/:id
 ✅ Upload de imagens
 ✅ Melhor estruturação do código
 🔜 Autenticação com JWT
+🔜 Adiconar campos como : senha, data, telefone e nickname 
+🔜 Criptografia de dados
 🔜 Integração com banco de dados
 🔜 Testes automatizados
