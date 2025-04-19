@@ -76,7 +76,7 @@ DELETE /users/:id
 ✅ Upload de imagens
 ✅ Melhor estruturação do código
 🔜 Autenticação com JWT
-🔜 Adiconar campos como : senha, data, telefone e nickname 
-🔜 Criptografia de dados
-🔜 Integração com banco de dados
+✅ Adiconar campos como : senha, data, telefone e nickname 
+✅ Criptografia de dados
+✅ Integração com banco de dados
 🔜 Testes Unitarios
