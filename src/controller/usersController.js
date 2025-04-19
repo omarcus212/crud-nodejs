@@ -1,5 +1,6 @@
 const userModel = require('../model/userModel');
-const { badRequest, sendResponse } = require('../utils/users/badRequest');
+const bcrypt = require('bcrypt');
+const { badRequest, sendResponse } = require('../utils/users/bodyRequest');
 
 
 const listUsers = async (req, res) => {
@@ -10,9 +11,10 @@ const listUsers = async (req, res) => {
         if (users.length === 0) {
 
             sendResponse(res, 200, false, "Nenhum usuário encontrado.");
-        }
+        } else {
 
-        sendResponse(res, 200, true, "Usuários encontrados!", users);
+            sendResponse(res, 200, true, "Usuários encontrados!", users);
+        }
 
     } catch (error) {
 
@@ -31,9 +33,10 @@ const listIDUser = async (req, res) => {
         if (users.length === 0) {
 
             sendResponse(res, 200, false, "Nenhum usuário encontrado.");
-        }
+        } else {
 
-        sendResponse(res, 200, true, "Usuários encontrados!", users);
+            sendResponse(res, 200, true, "Usuários encontrados!", users);
+        }
 
     } catch (error) {
 
@@ -44,18 +47,14 @@ const listIDUser = async (req, res) => {
 
 const addUser = async (req, res) => {
 
-    const { name, email, image } = req.body
+    const { name, email, nickname, password, birthday, cellphone, image } = req.body
 
-    if (!name) {
-        return badRequest(res, "Campo obrigatorio (NAME) não preenchido");
-    }
-
-    if (!email) {
-        return badRequest(res, "Campo obrigatorio (EMAIL) não preenchido")
-    }
+    const date = new Date(birthday)
+    const saltRounds = 5;
+    const passHash = await bcrypt.hash(password, saltRounds)
 
     try {
-        const users = await userModel.addUser(name, email, image);
+        const users = await userModel.addUser(name, email, nickname, passHash, date, cellphone, image);
 
         sendResponse(res, 200, true, "Usuários criado com sucesso!", "ID: " + users.insertId);
 
@@ -70,22 +69,14 @@ const addUser = async (req, res) => {
 const updateUser = async (req, res) => {
 
     const ID = req.params
-    const { name, email, image } = req.body
-    console.log(ID.id)
 
-    if (!name) {
-        return badRequest(res, "Campo obrigatorio (NAME) não preenchido");
-    }
+    const { name, email, nickname, password, birthday, cellphone, image } = req.body
+    const date = new Date(birthday)
+    const saltRounds = 5;
+    const passHash = await bcrypt.hash(password, saltRounds)
 
-    if (!email) {
-        return badRequest(res, "Campo obrigatorio (EMAIL) não preenchido")
-    }
-
-    if (isNaN(ID.id)) {
-        return badRequest(res, "ID não é um valor válido");
-    }
     try {
-        const users = await userModel.updateUser(ID.id, name, email, image);
+        const users = await userModel.updateUser(ID.id, name, email, nickname, passHash, date, cellphone, image);
         console.log(users)
 
         sendResponse(res, 200, true, "Usuários atualizado com sucesso!", users);

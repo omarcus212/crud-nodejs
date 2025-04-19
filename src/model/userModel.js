@@ -33,12 +33,12 @@ const getIdUsers = (ID) => {
     return rows
 }
 
-const addUser = (name, email, image) => {
+const addUser = (name, email, nickname, password, birthday, cellphone, image) => {
 
     const rows = new Promise((accept, reject) => {
 
-        db.query('INSERT INTO users (name, email, image) VALUES (?, ?, ?)',
-            [name, email, image],
+        db.query('INSERT INTO users (name, email, nickname, password, birthday, cellphone, image) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [name, email, nickname, password, birthday, cellphone, image],
             (err, data) => {
                 if (err) {
                     reject(err)
@@ -51,12 +51,12 @@ const addUser = (name, email, image) => {
     return rows
 }
 
-const updateUser = (ID, name, email, image) => {
+const updateUser = (ID, name, email, nickname, password, birthday, cellphone, image) => {
 
     const rows = new Promise((accept, reject) => {
 
-        db.query('UPDATE  users SET name=?, email=?, image=? WHERE id = ?;',
-            [name, email, image, ID],
+        db.query('UPDATE  users SET name=?, email=?, nickname=?, password=?, birthday=?, cellphone=?, image=? WHERE id = ?;',
+            [name, email, nickname, password, birthday, cellphone, image, ID],
             (err, data) => {
                 if (err) {
                     reject(err)
