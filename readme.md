@@ -78,5 +78,4 @@ DELETE /users/:id
 - 🔜 Autenticação com JWT
 - ✅ Adiconar campos como : senha, data, telefone e nickname 
 - ✅ Criptografia de dados
-- ✅ Integração com banco de dados
-- 🔜 Testes Unitarios
+- ✅ Integração com banco de dado
